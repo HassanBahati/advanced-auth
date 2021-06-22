@@ -61,7 +61,7 @@ exports.forgotpassword = async (req, res, next) => {
 
     await user.save();
 
-    //points toward frontend
+    //points toward frontend 
     const resetUrl = `http://localhost:3000/passwordreset${resetToken}`;
 
     const message = `
@@ -87,13 +87,13 @@ exports.forgotpassword = async (req, res, next) => {
 
       await user.save();
 
-      return next(ErrorResponse("Email could not be sent", 500));
+      return next(new ErrorResponse("Email could not be sent", 500));
     }
   } catch (error) {
     next(error);
   }
 };
-
+ 
 exports.resetpassword = async (req, res, next) => {
   const resetPasswordToken = crypto
     .createHash("sha256")
